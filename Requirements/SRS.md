@@ -82,6 +82,23 @@
 ## 2.2 Интерфейс пользователя
 Главный интерфейс будет представлен в виде списка расходов с возможностью добавления, редактирования и удаления записей. Также будет доступна аналитика расходов в виде графиков и фильтров по времени.
 
+Окно авторизации
+
+![Окно авторизации](https://github.com/mxrpheus6/Financik/blob/master/Mockups/SignInOrUpMockup.png)
+
+Главное окно приложения
+
+![Главное окно приложения](https://github.com/mxrpheus6/Financik/blob/master/Mockups/MainWindowMockup.png)
+
+Окно добавления дохода (или расхода)
+
+![Окно добавления дохода (или расхода)](https://github.com/mxrpheus6/Financik/blob/master/Mockups/AddIncomeOrExpense.png)
+
+Окно истории операций
+
+![Окно истории операций](https://github.com/mxrpheus6/Financik/blob/master/Mockups/OperationsHistory.png)
+
+
 <a name="user_specifications"/>
 
 ## 2.3 Характеристики пользователей
