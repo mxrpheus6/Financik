@@ -82,22 +82,41 @@
 ## 2.2 Интерфейс пользователя
 Главный интерфейс будет представлен в виде списка расходов с возможностью добавления, редактирования и удаления записей. Также будет доступна аналитика расходов в виде графиков и фильтров по времени.
 
-Окно авторизации
+Окно регистрации
 
-![Окно авторизации](https://github.com/mxrpheus6/Financik/blob/master/Mockups/SignInOrUpMockup.png)
+![Окно регистрации](https://github.com/mxrpheus6/Financik/blob/master/Mockups/SignUp.png)
+
+Окно логина
+
+![Окно логина](https://github.com/mxrpheus6/Financik/blob/master/Mockups/SignIn.png)
 
 Главное окно приложения
 
-![Главное окно приложения](https://github.com/mxrpheus6/Financik/blob/master/Mockups/MainWindowMockup.png)
+![Главное окно приложения](https://github.com/mxrpheus6/Financik/blob/master/Mockups/Home.png)
 
 Окно добавления дохода (или расхода)
 
-![Окно добавления дохода (или расхода)](https://github.com/mxrpheus6/Financik/blob/master/Mockups/AddIncomeOrExpense.png)
+![Окно добавления дохода (или расхода)](https://github.com/mxrpheus6/Financik/blob/master/Mockups/AddNew.png)
+
+Окно новой категории
+
+![Окно новой категории](https://github.com/mxrpheus6/Financik/blob/master/Mockups/AddNewCategory.png)
 
 Окно истории операций
 
-![Окно истории операций](https://github.com/mxrpheus6/Financik/blob/master/Mockups/OperationsHistory.png)
+![Окно истории операций](https://github.com/mxrpheus6/Financik/blob/master/Mockups/Chart.png)
 
+Выбор месяца для просмотра истории операций
+
+![Выбор месяца для просмотра истории операций](https://github.com/mxrpheus6/Financik/blob/master/Mockups/DatePicker.png)
+
+Окно настроек
+
+![Окно настроек](https://github.com/mxrpheus6/Financik/blob/master/Mockups/Settings.png)
+
+Окно изменения данных пользователя
+
+![Окно изменения данных пользователя](https://github.com/mxrpheus6/Financik/blob/master/Mockups/EditProfile.png)
 
 <a name="user_specifications"/>
 
