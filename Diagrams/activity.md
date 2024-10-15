@@ -12,7 +12,7 @@
 
 ### 2. Добавление новой транзакции<a name="2"></a>
 
-![Добавление новой транзакции](https://github.com/mxrpheus6/Financik/blob/master/Diagrams/img/addNewActivity.png.png)
+![Добавление новой транзакции](https://github.com/mxrpheus6/Financik/blob/master/Diagrams/img/addNewActivity.png)
   
 ### 3. Просмотр истории по месяцу<a name="3"></a>
 
