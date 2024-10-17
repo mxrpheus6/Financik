@@ -1,5 +1,6 @@
-
 # Диаграмма вариантов использования
+
+![Диаграмма вариантов использования](https://github.com/mxrpheus6/Financik/blob/master/Diagrams/img/useCase.png) 
 
 # Глоссарий
 
