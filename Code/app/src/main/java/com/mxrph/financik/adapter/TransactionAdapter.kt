@@ -8,14 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mxrph.financik.R
 
 data class Transaction(
+    val id: String? = null,
     val type: String,
     val name: String,
     val category: String,
     val amount: Double
 )
 
-class TransactionAdapter(private val transactions: List<Transaction>) :
-    RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
+class TransactionAdapter(private val transactions: MutableList<Transaction>,
+                         private val onDeleteTransaction: (Transaction) -> Unit
+) : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
     inner class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val transactionType: TextView = itemView.findViewById(R.id.transactionType)
@@ -42,6 +44,11 @@ class TransactionAdapter(private val transactions: List<Transaction>) :
 
         val backgroundColor = if (position % 2 == 0) 0xFFEFEFEF.toInt() else 0xFFFFFFFF.toInt()
         holder.itemView.setBackgroundColor(backgroundColor)
+
+        holder.itemView.setOnLongClickListener {
+            onDeleteTransaction(transaction)
+            true
+        }
     }
 
     override fun getItemCount(): Int {

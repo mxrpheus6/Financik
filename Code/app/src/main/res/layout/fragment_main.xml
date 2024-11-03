@@ -7,6 +7,11 @@
     android:padding="16dp"
     android:background="#F5F5F5">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <!-- Calendar View for displaying the date -->
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/calendarView"
@@ -164,45 +169,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp" />
 
-    <LinearLayout
-        android:id="@+id/additionalButtons"
+    <!-- Edit balance button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/editBalanceButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
+        android:text="Edit Balance"
         app:layout_constraintTop_toBottomOf="@id/addCategoryButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/editBalanceButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Balance"
-            android:layout_weight="1"/>
-
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="wrap_content"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/historyButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="History"
-            android:layout_weight="1"/>
-
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="wrap_content"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/settingsButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Settings"
-            android:layout_weight="1"/>
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/transactionsLabel"
@@ -212,7 +188,19 @@
         android:text="Today's Transaction Story:"
         android:textSize="16sp"
         android:textColor="#333333"
-        app:layout_constraintTop_toBottomOf="@id/additionalButtons"
+        app:layout_constraintTop_toBottomOf="@id/editBalanceButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/transactionsLabelEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="There is no transactions today : ("
+        android:textSize="16sp"
+        android:textColor="#333333"
+        app:layout_constraintTop_toBottomOf="@id/transactionsLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -3,11 +3,11 @@ package com.mxrph.financik
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mxrph.financik.adapter.Transaction
@@ -43,6 +43,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.addTransactionButton.setOnClickListener {
             startActivity(Intent(this, AddTransactionActivity::class.java))
+        }
+
+        binding.editBalanceButton.setOnClickListener {
+            startActivity(Intent(this, EditBalanceActivity::class.java))
+        }
+
+        binding.historyButton.setOnClickListener {
+            startActivity(Intent(this, HistoryActivity::class.java))
+        }
+
+        binding.settingsButton.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 
@@ -144,16 +156,20 @@ class MainActivity : AppCompatActivity() {
                 var totalAmount = 0.0
 
                 for (document in documents) {
+                    val id = document.getString("id") ?: "Unknown"
                     val type = document.getString("type") ?: "Unknown"
                     val name = document.getString("title") ?: "Unnamed"
                     val category = document.getString("category") ?: "No category"
                     val amount = document.getDouble("amount") ?: 0.0
 
-                    transactions.add(Transaction(type, name, category, amount))
+                    transactions.add(Transaction(id, type, name, category, amount))
                     totalAmount += if (type == "Income") amount else -amount
                 }
 
-                val adapter = TransactionAdapter(transactions)
+                val adapter = TransactionAdapter(transactions)  { transaction ->
+                    showDeleteConfirmationDialog(transaction)
+                }
+
                 binding.transactionHistoryRecyclerView.layoutManager = LinearLayoutManager(this)
                 binding.transactionHistoryRecyclerView.adapter = adapter
 
@@ -164,5 +180,43 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(this, "Error loading transactions", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun showDeleteConfirmationDialog(transaction: Transaction) {
+        AlertDialog.Builder(this)
+            .setTitle("Delete transaction")
+            .setMessage("Are you sure about deleting this transaction?")
+            .setPositiveButton("Yes") { _, _ ->
+
+                deleteTransactionFromDatabase(transaction)
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
+
+    private fun deleteTransactionFromDatabase(transaction: Transaction) {
+        val userId = auth.currentUser?.uid
+
+        if (userId != null) {
+            if (transaction.id != null) {
+                val transactionRef = db.collection("users")
+                    .document(userId)
+                    .collection("transactions")
+                    .document(transaction.id)
+
+                transactionRef.delete()
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Transaction deleted", Toast.LENGTH_SHORT).show()
+
+                        loadDailyTransactions()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Error deleting transaction", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+            } else {
+                Toast.makeText(this, "Transaction ID not found", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
