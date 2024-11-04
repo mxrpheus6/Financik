@@ -8,6 +8,12 @@ android {
     namespace = "com.mxrph.financik"
     compileSdk = 34
 
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/java/com/mxrph/financik/jni/CMakeLists.txt")
+        }
+    }
+
     defaultConfig {
         applicationId = "com.mxrph.financik"
         minSdk = 34
@@ -16,6 +22,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags.add("-std=c++11")
+            }
+        }
     }
 
     buildTypes {

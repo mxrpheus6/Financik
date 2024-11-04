@@ -23,6 +23,14 @@ import java.util.Locale
 import kotlin.math.round
 
 class HistoryActivity : AppCompatActivity() {
+    companion object {
+        init {
+            System.loadLibrary("native-lib")
+        }
+    }
+
+    external fun isDateInMonth(date: String, selectedDay: Int, selectedMonth: Int, selectedYear: Int): Boolean
+
     private lateinit var binding: ActivityHistoryBinding
 
     private lateinit var auth: FirebaseAuth
@@ -147,7 +155,7 @@ class HistoryActivity : AppCompatActivity() {
             }
     }
 
-    private fun isDateInMonth(date: String, selectedDay: Int, selectedMonth: Int, selectedYear: Int): Boolean {
+    /*private fun isDateInMonth(date: String, selectedDay: Int, selectedMonth: Int, selectedYear: Int): Boolean {
         val dateParts = date.split("/")
         if (dateParts.size != 3) return false
 
@@ -156,7 +164,7 @@ class HistoryActivity : AppCompatActivity() {
         val year = dateParts[2].toIntOrNull() ?: return false
 
         return year == selectedYear && month == selectedMonth
-    }
+    }*/
 
 
     private fun showDeleteConfirmationDialog(transaction: Transaction) {
